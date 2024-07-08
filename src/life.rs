@@ -50,3 +50,22 @@ pub fn life(grid: &Vec<u8>, size: i32) -> Vec<u8>
 
 // muerta:
 // 3: revive
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn it_works() {
+        let size = 3;
+        let mut board: Vec<u8> = vec![0; size*size];
+        board[0*size + 1] = 1;
+        board[1*size + 1] = 1;
+        board[2*size + 1] = 1;
+        let mut board_expected: Vec<u8> = vec![0; size*size];
+        board_expected[1*size + 0] = 1;
+        board_expected[1*size + 1] = 1;
+        board_expected[1*size + 2] = 1;
+        assert_eq!(board_expected, life(&board, size as i32));
+    }
+}
