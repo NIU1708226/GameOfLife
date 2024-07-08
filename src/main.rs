@@ -1,6 +1,4 @@
 extern crate sdl2;
-extern crate rand;
-
 
 use sdl2::pixels::Color;
 use sdl2::event::Event;
@@ -54,8 +52,9 @@ pub fn main() {
                 }
             }
         }
+        // Bad, allocating for every frame. But whatever.
         board = life::life(&board, size);
-        // life(&board, size);
+
         let _ = canvas.present();
         ::std::thread::sleep(Duration::new(0, 1_000_000_000u32 / 10));
     }

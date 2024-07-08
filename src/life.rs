@@ -1,4 +1,5 @@
 use rand::distributions::{Uniform, Distribution};
+extern crate rand;
 
 pub fn gen_board(size: i32) -> Vec<u8>
 {
@@ -9,6 +10,7 @@ pub fn gen_board(size: i32) -> Vec<u8>
 
 pub fn life(grid: &Vec<u8>, size: i32) -> Vec<u8>
 {
+    // Bad, allocating for every frame. But whatever.
     let mut next = grid.clone();
 
     for _x in 0..size {
