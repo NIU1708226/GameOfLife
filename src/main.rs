@@ -7,6 +7,8 @@ use std::time::Duration;
 
 mod life;
 
+const CELL_SIZE: i32 = 16;
+
 pub fn main() {
     let sdl_context = sdl2::init().unwrap();
     let video_subsystem = sdl_context.video().unwrap();
@@ -44,7 +46,10 @@ pub fn main() {
                 if board[(y*size + x) as usize] == 0 {
                     let x = x as i32;
                     let y = y as i32;
-                    let _ = canvas.fill_rect(sdl2::rect::Rect::new(x*16,y*16,16,16));
+                    let _ = canvas.fill_rect(sdl2::rect::Rect::new(x*CELL_SIZE,
+                                                                   y*CELL_SIZE,
+                                                                   CELL_SIZE as u32,
+                                                                   CELL_SIZE as u32));
                 }
             }
         }
