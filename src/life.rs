@@ -8,7 +8,7 @@ pub fn gen_board(size: i32) -> Vec<u8>
     (0..size*size).map(|_| die.sample(&mut rng)).collect()
 }
 
-pub fn life(grid: &Vec<u8>, size: i32) -> Vec<u8>
+pub fn life(grid: Vec<u8>, size: i32) -> Vec<u8>
 {
     // Bad, allocating for every frame. But whatever.
     let mut next = grid.clone();
@@ -66,6 +66,6 @@ mod tests {
         board_expected[1*size + 0] = 1;
         board_expected[1*size + 1] = 1;
         board_expected[1*size + 2] = 1;
-        assert_eq!(board_expected, life(&board, size as i32));
+        assert_eq!(board_expected, life(board, size as i32));
     }
 }
